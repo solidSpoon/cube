@@ -100,10 +100,20 @@ const pllSections: AlgorithmSection[] = [
       {
         id: "pll-ua",
         name: "Ua 置换",
-        algorithm: "M2 U M U2 M' U M2",
+        algorithm: "(R U' R) U (R U R U') (R' U' R2)",
         note: "三条棱块逆时针轮换。",
         diagram: {
-          sideBars: ["top", "right", "bottom", "left"],
+          sideStickers: [
+            { side: "top", index: 0 },
+            { side: "top", index: 1 },
+            { side: "top", index: 2 },
+            { side: "right", index: 0 },
+            { side: "right", index: 2 },
+            { side: "bottom", index: 0 },
+            { side: "bottom", index: 2 },
+            { side: "left", index: 0 },
+            { side: "left", index: 2 },
+          ],
           stickers: [
             "empty",
             "empty",
@@ -134,10 +144,20 @@ const pllSections: AlgorithmSection[] = [
       {
         id: "pll-ub",
         name: "Ub 置换",
-        algorithm: "M2 U' M U2 M' U' M2",
+        algorithm: "(R2' U)(R U R' U')(R' U')(R' U R')",
         note: "三条棱块顺时针轮换。",
         diagram: {
-          sideBars: ["top", "right", "bottom", "left"],
+          sideStickers: [
+            { side: "top", index: 0 },
+            { side: "top", index: 1 },
+            { side: "top", index: 2 },
+            { side: "right", index: 0 },
+            { side: "right", index: 2 },
+            { side: "bottom", index: 0 },
+            { side: "bottom", index: 2 },
+            { side: "left", index: 0 },
+            { side: "left", index: 2 },
+          ],
           stickers: [
             "empty",
             "empty",
@@ -171,7 +191,16 @@ const pllSections: AlgorithmSection[] = [
         algorithm: "M2 U M2 U2 M2 U M2",
         note: "前后、左右两组棱块互换。",
         diagram: {
-          sideBars: ["top", "right", "bottom", "left"],
+          sideStickers: [
+            { side: "top", index: 0 },
+            { side: "top", index: 2 },
+            { side: "right", index: 0 },
+            { side: "right", index: 2 },
+            { side: "bottom", index: 0 },
+            { side: "bottom", index: 2 },
+            { side: "left", index: 0 },
+            { side: "left", index: 2 },
+          ],
           stickers: [
             "empty",
             "empty",
@@ -206,10 +235,19 @@ const pllSections: AlgorithmSection[] = [
       {
         id: "pll-z",
         name: "Z 置换",
-        algorithm: "M' U M2 U M2 U M' U2 M2",
+        algorithm: "M2 U M2 U M' U2 M2 U2 M' U2",
         note: "相邻两组棱块交叉互换。",
         diagram: {
-          sideBars: ["top", "right", "bottom", "left"],
+          sideStickers: [
+            { side: "top", index: 0 },
+            { side: "top", index: 2 },
+            { side: "right", index: 0 },
+            { side: "right", index: 2 },
+            { side: "bottom", index: 0 },
+            { side: "bottom", index: 2 },
+            { side: "left", index: 0 },
+            { side: "left", index: 2 },
+          ],
           stickers: [
             "empty",
             "empty",
