@@ -2,12 +2,12 @@ import type { AlgorithmSection } from "./types";
 
 const ollSections: AlgorithmSection[] = [
   {
-    id: "oll-cross",
+    id: "oll-edge-orientation",
     title: "OLL 十字",
     description: "先把顶面黄色棱块翻好，得到十字。",
     cases: [
       {
-        id: "oll-line",
+        id: "oll-edge-line",
         name: "一字",
         algorithm: "F (R U R' U') F'",
         note: "横线朝左右摆放。",
@@ -26,7 +26,7 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-l-shape",
+        id: "oll-edge-l-shape",
         name: "小拐弯",
         algorithm: "f (R U R' U') f'",
         note: "小拐弯放在右上角。",
@@ -45,7 +45,7 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-dot",
+        id: "oll-edge-dot",
         name: "点",
         algorithm: "F (R U R' U') F' f (R U R' U') f'",
         note: "先做成一字或小拐弯，再进入十字。",
@@ -66,15 +66,15 @@ const ollSections: AlgorithmSection[] = [
     ],
   },
   {
-    id: "oll-corners",
-    title: "OLL 小鱼",
+    id: "oll-corner-orientation",
+    title: "OLL 角块朝向",
     description: "顶面已有十字后，处理角块朝向。",
     cases: [
       {
-        id: "oll-sune",
-        name: "小鱼 1",
+        id: "oll-corner-sune",
+        name: "小鱼",
         algorithm: "R' U2 R U R' U R",
-        note: "鱼头朝左下，右上角是目标角。",
+        note: "小鱼形态，按图示朝向摆放后执行。",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -95,10 +95,10 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-anti-sune",
-        name: "小鱼 2",
+        id: "oll-corner-anti-sune",
+        name: "反小鱼",
         algorithm: "R U' U' R' U' R U' R'",
-        note: "小鱼 1 的镜像情形。",
+        note: "小鱼的镜像形态，按图示朝向摆放后执行。",
         diagram: {
           sideStickers: [
             { side: "left", index: 0 },
@@ -119,8 +119,8 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-headlights",
-        name: "车灯",
+        id: "oll-corner-chameleon",
+        name: "变色龙",
         algorithm: "(r U R' U') (r' F R F')",
         note: "两个同向角放在左侧。",
         diagram: {
@@ -142,7 +142,7 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-bowtie",
+        id: "oll-corner-bowtie",
         name: "蝴蝶",
         algorithm: "F'(r U R' U') (r' F R)",
         note: "斜对角两个角未朝上。",
@@ -165,10 +165,10 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-corners-5",
-        name: "角朝向 5",
+        id: "oll-corner-headlights",
+        name: "车灯",
         algorithm: "(R2 D') (R U'U') (R' D) (R U'U' R)",
-        note: "顶面只差两个同列角时使用。",
+        note: "顶面只差两个同列角时使用，也常叫车灯形态。",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -188,8 +188,8 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-corners-6",
-        name: "角朝向 6",
+        id: "oll-corner-h",
+        name: "H 型",
         algorithm: "(R U U R' U') (R U R' U') (R U' R')",
         note: "两组侧面角线互相对应。",
         diagram: {
@@ -213,8 +213,8 @@ const ollSections: AlgorithmSection[] = [
         },
       },
       {
-        id: "oll-corners-7",
-        name: "角朝向 7",
+        id: "oll-corner-pi",
+        name: "Pi 型",
         algorithm: "R U'U' (R2' U') (R2 U') R2' U2 R",
         note: "侧面两条短线在同一边时使用。",
         diagram: {

@@ -16,8 +16,7 @@ function App() {
             简版 CFOP 公式列表
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-7 text-gray-500">
-            一个方便自己继续补充的 OLL / PLL 公式收集页。每个 case
-            只维护图形参数和公式，图形统一由 React 组件渲染。
+            按二步 OLL 和二步 PLL 整理的常用公式，配合顶层示意图快速识别形态。
           </p>
         </header>
         <div className="divide-y divide-gray-100">

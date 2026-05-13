@@ -2,15 +2,15 @@ import type { AlgorithmSection } from "./types";
 
 const pllSections: AlgorithmSection[] = [
   {
-    id: "pll-corners",
-    title: "PLL 角块顺序",
+    id: "pll-corner-permutation",
+    title: "PLL 角块置换",
     description: "先调整四个角块的位置。",
     cases: [
       {
-        id: "pll-aa",
+        id: "pll-a-perm",
         name: "A 置换",
         algorithm: "x' R2 D2(R' U' R)D2(R' U R') x",
-        note: "找到两个同色角，把那一面放到后面。",
+        note: "找到两个同色角块，把那一面放到后面。",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -51,7 +51,7 @@ const pllSections: AlgorithmSection[] = [
         id: "pll-e",
         name: "E 置换",
         algorithm: "(R2 U R' U') y (R U R' U')2 (R U R') y' (R U' R2)",
-        note: "没有任何一条同色角边时使用。",
+        note: "没有任何一面有同色角块时使用。",
         diagram: {
           sideStickers: [
             { side: "top", index: 1 },
@@ -93,8 +93,8 @@ const pllSections: AlgorithmSection[] = [
     ],
   },
   {
-    id: "pll-edges",
-    title: "PLL 棱块顺序",
+    id: "pll-edge-permutation",
+    title: "PLL 棱块置换",
     description: "角块已经正确后，调整棱块的位置。",
     cases: [
       {
