@@ -33,6 +33,7 @@ const cellSize = 22;
 const gap = 0;
 const gridOrigin = 18;
 const gridSize = cellSize * 3 + gap * 2;
+const gridStrokeWidth = 2;
 
 const getSideBarPath = (side: SideBar, index: number) => {
   const start = gridOrigin + index * cellSize + 3;
@@ -52,6 +53,73 @@ const getSideBarPath = (side: SideBar, index: number) => {
   }
 
   return `M ${gridOrigin + gridSize + offset} ${start} V ${end}`;
+};
+
+const getArrowPoint = (point: [number, number]) => ({
+  x: gridOrigin + point[0] * cellSize,
+  y: gridOrigin + point[1] * cellSize,
+});
+
+const getInsetArrow = (arrow: Arrow) => {
+  const from = getArrowPoint(arrow.from);
+  const to = getArrowPoint(arrow.to);
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const length = Math.hypot(dx, dy);
+  const startInset = 4;
+
+  if (length === 0) {
+    return { from, to };
+  }
+
+  const unitX = dx / length;
+  const unitY = dy / length;
+
+  return {
+    from: {
+      x: from.x + unitX * startInset,
+      y: from.y + unitY * startInset,
+    },
+    to,
+  };
+};
+
+const getArrowGeometry = (arrow: Arrow) => {
+  const { from, to } = getInsetArrow(arrow);
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const length = Math.hypot(dx, dy);
+  const headLength = 8;
+  const headHalfWidth = 4.5;
+
+  if (length === 0) {
+    return null;
+  }
+
+  const unitX = dx / length;
+  const unitY = dy / length;
+  const perpendicularX = -unitY;
+  const perpendicularY = unitX;
+  const base = {
+    x: to.x - unitX * headLength,
+    y: to.y - unitY * headLength,
+  };
+
+  return {
+    headPoints: [
+      `${to.x},${to.y}`,
+      `${base.x + perpendicularX * headHalfWidth},${
+        base.y + perpendicularY * headHalfWidth
+      }`,
+      `${base.x - perpendicularX * headHalfWidth},${
+        base.y - perpendicularY * headHalfWidth
+      }`,
+    ].join(" "),
+    shaft: {
+      from,
+      to: base,
+    },
+  };
 };
 
 const CubeCaseDiagram = forwardRef<SVGSVGElement, CubeCaseDiagramProps>(
@@ -78,19 +146,6 @@ const CubeCaseDiagram = forwardRef<SVGSVGElement, CubeCaseDiagramProps>(
         aria-label="魔方顶层公式图"
         {...rest}
       >
-        <defs>
-          <marker
-            id="cube-arrow"
-            markerHeight="8"
-            markerWidth="8"
-            markerUnits="userSpaceOnUse"
-            orient="auto"
-            refX="7"
-            refY="4"
-          >
-            <path d="M0,0 L8,4 L0,8 Z" fill="#184cff" />
-          </marker>
-        </defs>
         {visibleSideStickers.map(({ side, index }) => (
           <path
             key={`${side}-${index}`}
@@ -116,23 +171,30 @@ const CubeCaseDiagram = forwardRef<SVGSVGElement, CubeCaseDiagramProps>(
             />
           );
         })}
-        {[0, 1, 2, 3].map((line) => (
+        <rect
+          x={gridOrigin}
+          y={gridOrigin}
+          width={gridSize}
+          height={gridSize}
+          fill="none"
+          stroke="#111111"
+          strokeWidth={gridStrokeWidth}
+        />
+        {[1, 2].map((line) => (
           <g key={`grid-${line}`}>
-            <line
-              x1={gridOrigin + line * cellSize}
-              x2={gridOrigin + line * cellSize}
-              y1={gridOrigin}
-              y2={gridOrigin + gridSize}
-              stroke="#111111"
-              strokeWidth="2"
+            <rect
+              x={gridOrigin + line * cellSize - gridStrokeWidth / 2}
+              y={gridOrigin}
+              width={gridStrokeWidth}
+              height={gridSize}
+              fill="#111111"
             />
-            <line
-              x1={gridOrigin}
-              x2={gridOrigin + gridSize}
-              y1={gridOrigin + line * cellSize}
-              y2={gridOrigin + line * cellSize}
-              stroke="#111111"
-              strokeWidth="2"
+            <rect
+              x={gridOrigin}
+              y={gridOrigin + line * cellSize - gridStrokeWidth / 2}
+              width={gridSize}
+              height={gridStrokeWidth}
+              fill="#111111"
             />
           </g>
         ))}
@@ -157,19 +219,31 @@ const CubeCaseDiagram = forwardRef<SVGSVGElement, CubeCaseDiagramProps>(
             />
           );
         })}
-        {arrows.map((arrow, index) => (
-          <line
-            key={`${arrow.from.join("-")}-${arrow.to.join("-")}-${index}`}
-            x1={gridOrigin + arrow.from[0] * cellSize}
-            x2={gridOrigin + arrow.to[0] * cellSize}
-            y1={gridOrigin + arrow.from[1] * cellSize}
-            y2={gridOrigin + arrow.to[1] * cellSize}
-            markerEnd="url(#cube-arrow)"
-            stroke="#184cff"
-            strokeLinecap="round"
-            strokeWidth="3"
-          />
-        ))}
+        {arrows.map((arrow, index) => {
+          const arrowGeometry = getArrowGeometry(arrow);
+
+          if (!arrowGeometry) {
+            return null;
+          }
+
+          return (
+            <g
+              key={`${arrow.from.join("-")}-${arrow.to.join("-")}-${index}`}
+              fill="#184cff"
+              stroke="#184cff"
+            >
+              <line
+                x1={arrowGeometry.shaft.from.x}
+                x2={arrowGeometry.shaft.to.x}
+                y1={arrowGeometry.shaft.from.y}
+                y2={arrowGeometry.shaft.to.y}
+                strokeLinecap="butt"
+                strokeWidth="3"
+              />
+              <polygon points={arrowGeometry.headPoints} strokeWidth="0" />
+            </g>
+          );
+        })}
       </svg>
     );
   }

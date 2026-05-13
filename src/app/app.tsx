@@ -19,7 +19,7 @@ function App() {
             按二步 OLL 和二步 PLL 整理的常用公式，配合顶层示意图快速识别形态。
           </p>
         </header>
-        <div className="divide-y divide-gray-100">
+        <div>
           {sections.map((section) => (
             <AlgorithmSection key={section.id} section={section} />
           ))}
