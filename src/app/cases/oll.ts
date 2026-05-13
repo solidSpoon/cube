@@ -9,7 +9,7 @@ const ollSections: AlgorithmSection[] = [
       {
         id: "oll-line",
         name: "一字",
-        algorithm: "F R U R' U' F'",
+        algorithm: "F (R U R' U') F'",
         note: "横线朝左右摆放。",
         diagram: {
           stickers: [
@@ -28,7 +28,7 @@ const ollSections: AlgorithmSection[] = [
       {
         id: "oll-l-shape",
         name: "小拐弯",
-        algorithm: "f R U R' U' f'",
+        algorithm: "f (R U R' U') f'",
         note: "小拐弯放在右上角。",
         diagram: {
           stickers: [
@@ -47,7 +47,7 @@ const ollSections: AlgorithmSection[] = [
       {
         id: "oll-dot",
         name: "点",
-        algorithm: "F R U R' U' F' f R U R' U' f'",
+        algorithm: "F (R U R' U') F' f (R U R' U') f'",
         note: "先做成一字或小拐弯，再进入十字。",
         diagram: {
           stickers: [
