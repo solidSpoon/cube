@@ -3,14 +3,14 @@ import type { AlgorithmSection } from "./types";
 const pllSections: AlgorithmSection[] = [
   {
     id: "pll-corner-permutation",
-    title: "PLL 角块置换",
-    description: "先调整四个角块的位置。",
+    title: "PLL Corner Permutation",
+    description: "Permute the last-layer corners before edge permutation.",
     cases: [
       {
         id: "pll-a-perm",
-        name: "A 置换",
+        name: "A Permutation",
         algorithm: "x' R2 D2(R' U' R)D2(R' U R') x",
-        note: "找到两个同色角块，把那一面放到后面。",
+        note: "Put the solved corner pair at the back.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -49,9 +49,9 @@ const pllSections: AlgorithmSection[] = [
       },
       {
         id: "pll-e",
-        name: "E 置换",
+        name: "E Permutation",
         algorithm: "(R2 U R' U') y (R U R' U')2 (R U R') y' (R U' R2)",
-        note: "没有任何一面有同色角块时使用。",
+        note: "Use when no side has a solved corner pair.",
         diagram: {
           sideStickers: [
             { side: "top", index: 1 },
@@ -94,14 +94,14 @@ const pllSections: AlgorithmSection[] = [
   },
   {
     id: "pll-edge-permutation",
-    title: "PLL 棱块置换",
-    description: "角块已经正确后，调整棱块的位置。",
+    title: "PLL Edge Permutation",
+    description: "Permute the last-layer edges after corner permutation.",
     cases: [
       {
         id: "pll-ua",
-        name: "Ua 置换",
+        name: "Ua Permutation",
         algorithm: "(R U' R) U (R U R U') (R' U' R2)",
-        note: "三条棱块逆时针轮换。",
+        note: "Cycles three edges counterclockwise.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -143,9 +143,9 @@ const pllSections: AlgorithmSection[] = [
       },
       {
         id: "pll-ub",
-        name: "Ub 置换",
+        name: "Ub Permutation",
         algorithm: "(R2' U)(R U R' U')(R' U')(R' U R')",
-        note: "三条棱块顺时针轮换。",
+        note: "Cycles three edges clockwise.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -187,9 +187,9 @@ const pllSections: AlgorithmSection[] = [
       },
       {
         id: "pll-h",
-        name: "H 置换",
+        name: "H Permutation",
         algorithm: "M2 U M2 U2 M2 U M2",
-        note: "前后、左右两组棱块互换。",
+        note: "Swaps the front-back and left-right edge pairs.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -234,9 +234,9 @@ const pllSections: AlgorithmSection[] = [
       },
       {
         id: "pll-z",
-        name: "Z 置换",
+        name: "Z Permutation",
         algorithm: "M2 U M2 U M' U2 M2 U2 M' U2",
-        note: "相邻两组棱块交叉互换。",
+        note: "Swaps two adjacent edge pairs across the top layer.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },

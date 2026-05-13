@@ -28,7 +28,7 @@ const AlgorithmSection = forwardRef<HTMLElement, AlgorithmSectionProps>(
                 <h3 className="text-base font-semibold text-gray-950">
                   {index + 1}. {item.name}
                 </h3>
-                <p className="mt-1 break-words text-lg font-bold leading-snug text-blue-700">
+                <p className="mt-1 break-words text-lg font-bold leading-snug text-gray-800">
                   {item.algorithm}
                 </p>
               </div>

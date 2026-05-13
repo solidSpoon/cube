@@ -13,10 +13,11 @@ function App() {
             CFOP Algorithms
           </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-normal text-gray-950">
-            简版 CFOP 公式列表
+            CFOP Algorithm Sheet
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-7 text-gray-500">
-            按二步 OLL 和二步 PLL 整理的常用公式，配合顶层示意图快速识别形态。
+            A clean reference for two-look OLL and two-look PLL, organized
+            around quick top-layer recognition.
           </p>
         </header>
         <div>

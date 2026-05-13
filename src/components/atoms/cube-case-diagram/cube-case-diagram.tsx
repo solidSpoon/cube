@@ -143,7 +143,7 @@ const CubeCaseDiagram = forwardRef<SVGSVGElement, CubeCaseDiagramProps>(
         height={size}
         viewBox="0 0 102 102"
         role="img"
-        aria-label="魔方顶层公式图"
+        aria-label="Cube top-layer case diagram"
         {...rest}
       >
         {visibleSideStickers.map(({ side, index }) => (

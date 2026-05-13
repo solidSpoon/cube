@@ -3,14 +3,14 @@ import type { AlgorithmSection } from "./types";
 const ollSections: AlgorithmSection[] = [
   {
     id: "oll-edge-orientation",
-    title: "OLL 十字",
-    description: "先把顶面黄色棱块翻好，得到十字。",
+    title: "OLL Edge Orientation",
+    description: "Orient the last-layer edges to form the OLL cross.",
     cases: [
       {
         id: "oll-edge-line",
-        name: "一字",
+        name: "Line Case",
         algorithm: "F (R U R' U') F'",
-        note: "横线朝左右摆放。",
+        note: "Hold the line horizontally.",
         diagram: {
           stickers: [
             "empty",
@@ -27,9 +27,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-edge-l-shape",
-        name: "小拐弯",
+        name: "L Case",
         algorithm: "f (R U R' U') f'",
-        note: "小拐弯放在右上角。",
+        note: "Place the L in the upper-right corner.",
         diagram: {
           stickers: [
             "empty",
@@ -46,9 +46,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-edge-dot",
-        name: "点",
+        name: "Dot Case",
         algorithm: "F (R U R' U') F' f (R U R' U') f'",
-        note: "先做成一字或小拐弯，再进入十字。",
+        note: "Reduce to the line or L case, then complete edge orientation.",
         diagram: {
           stickers: [
             "empty",
@@ -67,14 +67,14 @@ const ollSections: AlgorithmSection[] = [
   },
   {
     id: "oll-corner-orientation",
-    title: "OLL 角块朝向",
-    description: "顶面已有十字后，处理角块朝向。",
+    title: "OLL Corner Orientation",
+    description: "Orient the last-layer corners after edge orientation.",
     cases: [
       {
         id: "oll-corner-sune",
-        name: "小鱼",
+        name: "Sune Case",
         algorithm: "R' U2 R U R' U R",
-        note: "小鱼形态，按图示朝向摆放后执行。",
+        note: "Hold the case as shown before executing.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -96,9 +96,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-corner-anti-sune",
-        name: "反小鱼",
+        name: "Anti-Sune Case",
         algorithm: "R U' U' R' U' R U' R'",
-        note: "小鱼的镜像形态，按图示朝向摆放后执行。",
+        note: "The mirror case of Sune. Hold the case as shown before executing.",
         diagram: {
           sideStickers: [
             { side: "left", index: 0 },
@@ -120,9 +120,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-corner-chameleon",
-        name: "变色龙",
+        name: "Chameleon Case",
         algorithm: "(r U R' U') (r' F R F')",
-        note: "两个同向角放在左侧。",
+        note: "Place the two matching side-facing corners on the left.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -143,9 +143,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-corner-bowtie",
-        name: "蝴蝶",
+        name: "Bowtie Case",
         algorithm: "F'(r U R' U') (r' F R)",
-        note: "斜对角两个角未朝上。",
+        note: "Use when two diagonal last-layer corners are unoriented.",
         diagram: {
           sideStickers: [
             { side: "left", index: 0 },
@@ -166,9 +166,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-corner-headlights",
-        name: "车灯",
+        name: "Headlights Case",
         algorithm: "(R2 D') (R U'U') (R' D) (R U'U' R)",
-        note: "顶面只差两个同列角时使用，也常叫车灯形态。",
+        note: "Use when the two unoriented corners occupy the same row.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -189,9 +189,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-corner-h",
-        name: "H 型",
+        name: "H Case",
         algorithm: "(R U U R' U') (R U R' U') (R U' R')",
-        note: "两组侧面角线互相对应。",
+        note: "The two side sticker pairs face opposite sides.",
         diagram: {
           sideStickers: [
             { side: "top", index: 0 },
@@ -214,9 +214,9 @@ const ollSections: AlgorithmSection[] = [
       },
       {
         id: "oll-corner-pi",
-        name: "Pi 型",
+        name: "Pi Case",
         algorithm: "R U'U' (R2' U') (R2 U') R2' U2 R",
-        note: "侧面两条短线在同一边时使用。",
+        note: "Use when the side sticker pairs sit on the same side.",
         diagram: {
           sideStickers: [
             { side: "left", index: 0 },
