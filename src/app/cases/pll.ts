@@ -9,10 +9,17 @@ const pllSections: AlgorithmSection[] = [
       {
         id: "pll-aa",
         name: "A 置换",
-        algorithm: "x R' U R' D2 R U' R' D2 R2 x'",
+        algorithm: "x' R2 D2(R' U' R)D2(R' U R') x",
         note: "找到两个同色角，把那一面放到后面。",
         diagram: {
-          sideBars: ["top", "right", "bottom", "left"],
+          sideStickers: [
+            { side: "top", index: 0 },
+            { side: "top", index: 1 },
+            { side: "right", index: 1 },
+            { side: "bottom", index: 1 },
+            { side: "left", index: 0 },
+            { side: "left", index: 1 },
+          ],
           stickers: [
             "empty",
             "empty",
@@ -43,10 +50,15 @@ const pllSections: AlgorithmSection[] = [
       {
         id: "pll-e",
         name: "E 置换",
-        algorithm: "x' R U' R' D R U R' D' R U R' D R U' R' D' x",
+        algorithm: "(R2 U R' U') y (R U R' U')2 (R U R') y' (R U' R2)",
         note: "没有任何一条同色角边时使用。",
         diagram: {
-          sideBars: ["top", "right", "bottom", "left"],
+          sideStickers: [
+            { side: "top", index: 1 },
+            { side: "right", index: 1 },
+            { side: "bottom", index: 1 },
+            { side: "left", index: 1 },
+          ],
           stickers: [
             "empty",
             "empty",
