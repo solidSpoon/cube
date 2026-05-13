@@ -1,6 +1,6 @@
 # AI Agent Development Guide
 
-This guide helps AI agents build features and components for the Vital project efficiently and consistently.
+This guide helps AI agents build features and components for the Cube Algorithms project efficiently and consistently.
 
 ## Quick Reference
 
@@ -65,9 +65,9 @@ src/components/organisms/{component-name}/
 ```
 
 #### File Naming
-- Use **kebab-case** for directories: `copy-button`, `user-card`, `search-input`
-- Use **kebab-case** for files: `copy-button.tsx`, not `CopyButton.tsx`
-- Component name is **PascalCase**: `const CopyButton = ...`
+- Use **kebab-case** for directories: `cube-case-diagram`, `user-card`, `search-input`
+- Use **kebab-case** for files: `cube-case-diagram.tsx`, not `CubeCaseDiagram.tsx`
+- Component name is **PascalCase**: `const CubeCaseDiagram = ...`
 
 ### Step 3: Component Implementation
 
@@ -223,19 +223,14 @@ import Button from "components/atoms/button/button";
 
 ```typescript
 // In another component
-import Button from "components/atoms/button";
-import Card from "components/organisms/card";
-import { BeakerIcon } from "@heroicons/react/24/outline";
+import CubeCaseDiagram from "components/atoms/cube-case-diagram";
+import AlgorithmSection from "components/organisms/algorithm-section";
 
 function MyComponent() {
   return (
-    <Card
-      title="Title"
-      description="Description"
-      Icon={BeakerIcon}
-    >
-      <Button>Click me</Button>
-    </Card>
+    <AlgorithmSection section={section}>
+      <CubeCaseDiagram stickers={stickers} />
+    </AlgorithmSection>
   );
 }
 ```
@@ -474,7 +469,6 @@ function Form() {
 
 ```css
 @import "tailwindcss";
-@import "@tailwindcss/forms";
 
 @layer base {
   html {
@@ -501,25 +495,6 @@ function Form() {
 ```
 
 ## Working with Icons
-
-### Using Hero Icons
-
-```typescript
-import { BeakerIcon, UserIcon } from "@heroicons/react/24/outline";
-import { HeartIcon } from "@heroicons/react/24/solid";
-
-function Component() {
-  return (
-    <div>
-      {/* Outline icons */}
-      <BeakerIcon className="w-6 h-6 text-blue-500" />
-
-      {/* Solid icons */}
-      <HeartIcon className="w-6 h-6 text-red-500" />
-    </div>
-  );
-}
-```
 
 ### Passing Icons as Props
 

@@ -1,27 +1,19 @@
 {
-  "name": "vital",
+  "name": "cube-algorithms",
   "type": "module",
   "version": "1.0.0",
-  "description": "Starter template for Vite with React (TypeScript). Supports Tailwind. Vitest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
-  "homepage": "https://github.com/jvidalv/vital#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jvidalv/vital.git"
-  },
-  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
+  "description": "Personal CFOP algorithm collection built with React, TypeScript, Vite, and Tailwind CSS.",
+  "private": true,
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jvidalv/vital/issues"
-  },
   "keywords": [
+    "cfop",
+    "cube",
+    "oll",
+    "pll",
     "react",
     "vite",
     "typescript",
-    "tailwind",
-    "template",
-    "starter",
-    "eslint",
-    "prettier"
+    "tailwind"
   ],
   "browserslist": [
     ">0.2%",
@@ -39,7 +31,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -47,7 +38,6 @@
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.39.1",
-    "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.6",
