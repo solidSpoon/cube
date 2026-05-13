@@ -35,22 +35,23 @@ const gridOrigin = 18;
 const gridSize = cellSize * 3 + gap * 2;
 
 const getSideBarPath = (side: SideBar, index: number) => {
-  const start = gridOrigin + index * cellSize + 4;
-  const end = gridOrigin + (index + 1) * cellSize - 4;
+  const start = gridOrigin + index * cellSize + 3;
+  const end = gridOrigin + (index + 1) * cellSize - 3;
+  const offset = 5;
 
   if (side === "top") {
-    return `M ${start} ${gridOrigin - 8} H ${end}`;
+    return `M ${start} ${gridOrigin - offset} H ${end}`;
   }
 
   if (side === "bottom") {
-    return `M ${start} ${gridOrigin + gridSize + 8} H ${end}`;
+    return `M ${start} ${gridOrigin + gridSize + offset} H ${end}`;
   }
 
   if (side === "left") {
-    return `M ${gridOrigin - 8} ${start} V ${end}`;
+    return `M ${gridOrigin - offset} ${start} V ${end}`;
   }
 
-  return `M ${gridOrigin + gridSize + 8} ${start} V ${end}`;
+  return `M ${gridOrigin + gridSize + offset} ${start} V ${end}`;
 };
 
 const CubeCaseDiagram = forwardRef<SVGSVGElement, CubeCaseDiagramProps>(
